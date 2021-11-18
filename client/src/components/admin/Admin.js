@@ -31,7 +31,7 @@ const Admin = ({ setAlert, getMessages, getAdminUnreadMessages }) => {
     var intervalID = setInterval(async function () {
       let messageNumbersFromDB = await getClientsMessageNumbers()
 
-      if (localStorage.getItem('messageNumbers') === 'undefined' || localStorage.getItem('messageNumbers') === null || localStorage.getItem('messageNumbers') === []) {
+      if (localStorage.getItem('messageNumbers') === 'undefined' || localStorage.getItem('messageNumbers') === null || localStorage.getItem('messageNumbers') === '[]') {
         localStorage.setItem('messageNumbers', JSON.stringify(messageNumbersFromDB))
       }
 
