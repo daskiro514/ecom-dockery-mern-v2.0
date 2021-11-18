@@ -35,9 +35,6 @@ const Admin = ({ setAlert, getMessages, getAdminUnreadMessages }) => {
         localStorage.setItem('messageNumbers', JSON.stringify(messageNumbersFromDB))
       }
 
-      console.log(messageNumbersFromDB)
-      console.log(localStorage.getItem('messageNumbers'))
-
       var clientIDForChat = localStorage.getItem('chatClient')
       let messageNumbersFromLocalStorage = JSON.parse(localStorage.getItem('messageNumbers'))
 
