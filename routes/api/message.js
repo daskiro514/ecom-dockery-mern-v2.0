@@ -156,13 +156,11 @@ router.get('/getAdminMessageNumbers/:id', async (req, res) => {
 
 const sendEmailToCustomer = async (client) => {
   var emailContentToCustomer = {
-    from: 'ebbportal <info@aquerate.com>',
+    from: 'noreply <info@ebbportal.com>',
     to: client.email,
     subject: 'There are new message(s) from Admin',
-    text: `There are new message(s) from Admin. https://ebbportal.com/dashboard/messages`
+    text: `There are new message(s) from Admin. Please check https://ebbportal.com/dashboard/messages`
   }
-
-  console.log(emailContentToCustomer)
 
   mailgun.messages().send(emailContentToCustomer, function (error, body) {
     console.log(body)
