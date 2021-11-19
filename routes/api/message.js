@@ -156,7 +156,7 @@ router.get('/getAdminMessageNumbers/:id', async (req, res) => {
 
 const sendEmailToCustomer = async (client) => {
   var emailContentToCustomer = {
-    from: 'ebbportal <ebbportal.com>',
+    from: 'ebbportal <info@aquerate.com>',
     to: client.email,
     subject: 'There are new message(s) from Admin',
     text: `There are new message(s) from Admin. https://ebbportal.com/dashboard/messages`
