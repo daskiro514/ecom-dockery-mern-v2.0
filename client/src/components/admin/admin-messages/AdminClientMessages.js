@@ -57,7 +57,7 @@ const AdminClientMessages = ({ match, getClient, admin, adminID, setChatClient, 
               {messages.map((item, index) =>
                 <div key={index} className='mt-2'>
                   <div className={'font-13 ' + (item.writer._id === adminID ? 'text-right' : '')}>
-                    <b>{`${item.writer.firstName} ${item.writer.lastName}`}, {formatDateTime(item.date)}</b>
+                    <b>{item.writer._id === adminID ? 'Admin' : `${item.writer.firstName} ${item.writer.lastName}`}, {formatDateTime(item.date)}</b>
                     {item.writer._id === adminID ? <i onClick={() => window.confirm('Are you sure?') ? deleteMessage(clientID, item._id, 'admin') : null} className='fa fa-trash-o cursor-pointer pl-2'></i> : null}
                   </div>
                   <div className={'p-1 message-item rounded ' + (item.writer._id === adminID ? 'ml-auto' : '')}>

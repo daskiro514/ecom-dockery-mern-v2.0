@@ -45,7 +45,7 @@ const ClientMessages = ({ clientID, addNewMessage, getMessages, deleteMessage, m
           {messages.map((item, index) =>
             <div key={index} className='mt-2'>
               <div className={'font-13 ' + (item.writer._id === clientID ? 'text-right' : '')}>
-                <b>{`${item.writer.firstName} ${item.writer.lastName}`}, {formatDateTime(item.date)}</b>
+                <b>{item.writer._id === clientID ? `${item.writer.firstName} ${item.writer.lastName}` : 'Admin'}, {formatDateTime(item.date)}</b>
                 {item.writer._id === clientID ? <i onClick={() => window.confirm('Are you sure?') ? deleteMessage(clientID, item._id) : null} className='fa fa-trash-o cursor-pointer pl-2'></i> : null}
               </div>
               <div className={'p-1 message-item rounded ' + (item.writer._id === clientID ? 'ml-auto' : '')}>
