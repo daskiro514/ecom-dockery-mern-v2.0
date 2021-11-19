@@ -162,8 +162,6 @@ const sendEmailToCustomer = async (client) => {
     text: `There are new message(s) from Admin. Please check https://ebbportal.com/dashboard/messages`
   }
 
-  console.log(emailContentToCustomer)
-
   mailgun.messages().send(emailContentToCustomer, function (error, body) {
     console.log(body)
   })
