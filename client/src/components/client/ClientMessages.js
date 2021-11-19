@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addNewMessage, getMessages, deleteMessage } from '../../actions/message'
+import { addNewMessage, getMessages, deleteMessage, messagesRead } from '../../actions/message'
 import { getAdmin } from '../../actions/client'
 import { formatDateTime } from '../../utils/formatDate1'
 
-const ClientMessages = ({ clientID, addNewMessage, getMessages, deleteMessage, messages, getAdmin, admin }) => {
+const ClientMessages = ({ clientID, addNewMessage, getMessages, deleteMessage, messages, getAdmin, admin, messagesRead }) => {
   React.useEffect(() => {
     getMessages(clientID)
   }, [getMessages, clientID])
@@ -12,6 +12,10 @@ const ClientMessages = ({ clientID, addNewMessage, getMessages, deleteMessage, m
   React.useEffect(() => {
     getAdmin()
   }, [getAdmin])
+
+  React.useEffect(() => {
+    messagesRead(clientID)
+  }, [messagesRead, clientID])
 
   const messagesEndRef = React.useRef(null)
 
@@ -88,4 +92,4 @@ const mapStateToProps = state => ({
   admin: state.client.clientAdmin
 })
 
-export default connect(mapStateToProps, { addNewMessage, getMessages, deleteMessage, getAdmin })(ClientMessages)
+export default connect(mapStateToProps, { addNewMessage, getMessages, deleteMessage, getAdmin, messagesRead })(ClientMessages)
