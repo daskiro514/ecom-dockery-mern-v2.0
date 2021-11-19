@@ -155,6 +155,8 @@ router.get('/getAdminMessageNumbers/:id', async (req, res) => {
 })
 
 const sendEmailToCustomer = async (client) => {
+  console.log(client)
+  
   var emailContentToCustomer = {
     from: 'Ecom Hub <info@ebbportal.com>',
     to: client.email,
