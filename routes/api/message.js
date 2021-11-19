@@ -29,7 +29,6 @@ router.post('/addNewMessage', async (req, res) => {
     if (toClientUnread >= 0) {
       await User.findByIdAndUpdate(req.body.client, { toClientUnread: toClientUnread + 1 }, { new: true })
     }
-    await sendEmailToCustomer(client)
   } else {
     await User.findByIdAndUpdate(req.body.client, { toAdminMessages: toAdminMessages + 1 }, { new: true })
     if (toAdminUnread >= 0) {
@@ -154,12 +153,26 @@ router.get('/getAdminMessageNumbers/:id', async (req, res) => {
   })
 })
 
+const ruleForEmail = new schedule.RecurrenceRule()
+ruleForEmail.second = 1
+
+const scheduleForSendEmail = schedule.scheduleJob(ruleForEmail, async () => {
+  const clients = await User.find({ type: 'client' })
+
+  clients.forEach(async (client) => {
+    if (client.toClientUnread > 0) {
+      await User.findByIdAndUpdate(client._id, { toClientUnread: 0 }, { new: true })
+      await sendEmailToCustomer(client)
+    }
+  })
+})
+
 const sendEmailToCustomer = async (client) => {
   var emailContentToCustomer = {
     from: 'ebbportal <info@ebbportal.com>',
     to: client.email,
     subject: 'There are new message(s) from Admin',
-    text: `There are new message(s) from Admin. Please check https://ebbportal.com/dashboard/messages`
+    text: `Hi, ${client.firstName} ${client.lastName}. There are new message(s) from Admin. Please check https://ebbportal.com/dashboard/messages`
   }
 
   mailgun.messages().send(emailContentToCustomer, function (error, body) {
