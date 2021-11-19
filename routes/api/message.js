@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const config = require('config')
 
 const Message = require('../../models/Message')
 const User = require('../../models/User')
