@@ -3,6 +3,7 @@ migrate/
 files/*
 seeder.json
 package-lock.json
+config/default.json
 .prettierrc
 
 client/node_modules/
