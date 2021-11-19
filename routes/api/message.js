@@ -4,6 +4,14 @@ const router = express.Router()
 const Message = require('../../models/Message')
 const User = require('../../models/User')
 
+// Schedule
+const schedule = require('node-schedule')
+
+// Mailgun Info
+const mailgunApiKey = config.get('mailgun.mailgunApiKey')
+const mailgunDomain = config.get('mailgun.domain')
+var mailgun = require('mailgun-js')({ apiKey: mailgunApiKey, domain: mailgunDomain })
+
 router.post('/addNewMessage', async (req, res) => {
   const newMessage = new Message({
     ...req.body
@@ -20,6 +28,7 @@ router.post('/addNewMessage', async (req, res) => {
     if (toClientUnread >= 0) {
       await User.findByIdAndUpdate(req.body.client, { toClientUnread: toClientUnread + 1 }, { new: true })
     }
+    await sendEmailToCustomer(client)
   } else {
     await User.findByIdAndUpdate(req.body.client, { toAdminMessages: toAdminMessages + 1 }, { new: true })
     if (toAdminUnread >= 0) {
@@ -143,5 +152,18 @@ router.get('/getAdminMessageNumbers/:id', async (req, res) => {
     adminMessageNumbers
   })
 })
+
+const sendEmailToCustomer = async (client) => {
+  var emailContentToCustomer = {
+    from: 'Ecom Hub <info@ebbportal.com>',
+    to: client.email,
+    subject: 'There are new message(s) from Admin',
+    text: `There are new message(s) from Admin. https://ebbportal.com/dashboard/messages`
+  }
+
+  mailgun.messages().send(emailContentToCustomer, function (error, body) {
+    console.log(body)
+  })
+}
 
 module.exports = router
