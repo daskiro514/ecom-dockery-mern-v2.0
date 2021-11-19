@@ -42,6 +42,11 @@ const Admin = ({ setAlert, getMessages, getAdminUnreadMessages }) => {
 
       if (messageNumbersFromDB === null || messageNumbersFromLocalStorage === null || messageNumbersFromDB === undefined || messageNumbersFromLocalStorage === undefined) return false
 
+      if (messageNumbersFromDB.length !== messageNumbersFromLocalStorage.length) {
+        localStorage.setItem('messageNumbers', JSON.stringify(messageNumbersFromDB))
+        return false
+      }
+
       if (checkArraysSame(messageNumbersFromLocalStorage, messageNumbersFromDB)) {
 
       } else {
