@@ -23,7 +23,7 @@ const ClientMessages = ({ clientID, addNewMessage, getMessages, deleteMessage, m
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" })
   }
 
-  React.useEffect(scrollToBottom, [messages]);
+  React.useEffect(scrollToBottom, [messages])
 
   const [content, setContent] = React.useState('')
 

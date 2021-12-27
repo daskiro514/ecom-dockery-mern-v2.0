@@ -169,10 +169,10 @@ const scheduleForSendEmail = schedule.scheduleJob(ruleForEmail, async () => {
 
 const sendEmailToCustomer = async (client) => {
   var emailContentToCustomer = {
-    from: 'ebbportal <info@ebbportal.com>',
+    from: 'PORTAL <info@portal.431performance.com>',
     to: client.email,
     subject: 'There are new message(s) from Admin',
-    text: `Hi, ${client.firstName} ${client.lastName}. There are new message(s) from Admin. Please check https://ebbportal.com/dashboard/messages`
+    text: `Hi, ${client.firstName} ${client.lastName}. There are new message(s) from Admin. Please check https://portal.431performance.com/dashboard/messages`
   }
 
   mailgun.messages().send(emailContentToCustomer, function (error, body) {

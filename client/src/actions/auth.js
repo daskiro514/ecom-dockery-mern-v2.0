@@ -60,6 +60,25 @@ export const login = (email, password) => async dispatch => {
   }
 }
 
+// Update User
+export const update = (data) => async dispatch => {
+  try {
+    const res = await api.post('/auth/update', data)
+
+    dispatch(loadUser())
+  } catch (err) {
+    const errors = err.response.data.errors
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+    }
+
+    dispatch({
+      type: LOGIN_FAIL
+    })
+  }
+}
+
 // Logout
 export const logout = () => async dispatch => {
   dispatch({ type: LOGOUT })

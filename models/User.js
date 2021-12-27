@@ -34,87 +34,49 @@ const UserSchema = new mongoose.Schema({
     default: Date.now
   },
   // FOR CLIENT
-  dateOfBirth: {
-    type: Date
-  },
-  usBusinessTaxID: {
-    type: String
-  },
-  usBusineesAddress: {
-    type: String
-  },
-  emailForStore: {
-    type: String
-  },
   phoneNumber: {
     type: String
   },
-  w9: {
+  dateOfBirth: {
+    type: Date
+  },
+  nameOfLLC: {
     type: String
   },
-  w9Status: {
-    type: String,
-    default: 'Pending'
-  },
-  einVerificationLetter: {
+  einOfLLC: {
     type: String
   },
-  einVerificationLetterStatus: {
-    type: String,
-    default: 'Pending'
-  },
-  articlesOfOrganization: {
+  addressOfLLC: {
     type: String
   },
-  articlesOfOrganizationStatus: {
-    type: String,
-    default: 'Pending'
-  },
-  bankCard: {
+  nameOfStore: {
     type: String
-  },
-  bankCardStatus: {
-    type: String,
-    default: 'Pending'
-  },
-  usDriversLicense: {
-    type: String
-  },
-  usDriversLicenseStatus: {
-    type: String,
-    default: 'Pending'
   },
   bankAccount: {
     type: String
   },
-  routing: {
+  bankRouting: {
     type: String
   },
-  creditDebitCardFront: {
+  emailOfFacebook: {
     type: String
   },
-  creditDebitCardFrontStatus: {
+  passwordOfFacebook: {
+    type: String
+  },
+  frontCardLink: {
+    type: String
+  },
+  frontCardLinkStatus: {
     type: String,
     default: 'Pending'
   },
-  creditDebitCardBack: {
+  backCardLink: {
     type: String
   },
-  creditDebitCardBackStatus: {
+  backCardLinkStatus: {
     type: String,
     default: 'Pending'
-  },
-  dunsNumber: {
-    type: String
-  },
-  website: {
-    type: String
-  },
-  amazonSellerName: {
-    type: String
-  },
-  amazonStoreUrl: {
-    type: String
   },
   // FOR MESSAGE
   toAdminMessages: {

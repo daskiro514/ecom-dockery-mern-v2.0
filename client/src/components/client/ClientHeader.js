@@ -37,7 +37,7 @@ const ClientHeader = ({ getNotifications, notifications, clientID, getClientUnre
                 <div className="dropdown-item" onClick={e => {
                   e.stopPropagation()
                   messagesRead(clientID)
-                  history.push('/dashboard/messages')
+                  history.push('dashboard/messages')
                 }}>
                   There are {clientUnreadMessages} new message(s).
                 </div>

@@ -26,7 +26,7 @@ const Alert = ({ alerts }) => {
         default:
           break
       }
-    });
+    })
   }, [alerts])
 
   return (

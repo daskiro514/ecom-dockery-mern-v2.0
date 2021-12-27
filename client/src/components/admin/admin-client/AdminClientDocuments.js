@@ -13,32 +13,28 @@ const AdminClientDocuments = ({ client, updateClientDocumentStatus }) => {
         <div className='col-md-6 pl-4'>{client.firstName}</div>
         <div className='col-md-6'>Last Name:</div>
         <div className='col-md-6 pl-4'>{client.lastName}</div>
-        <div className='col-md-6'>D.O.B:</div>
-        <div className='col-md-6 pl-4'>{formatDate(client.dateOfBirth)}</div>
-        <div className='col-md-6'>Business Email:</div>
+        <div className='col-md-6'>Email Address:</div>
         <div className='col-md-6 pl-4'>{client.email}</div>
         <div className='col-md-6'>Phone Number:</div>
         <div className='col-md-6 pl-4'>{client.phoneNumber}</div>
-        <div className='col-md-6'>U.S Business Tax ID / EIN / TIN:</div>
-        <div className='col-md-6 pl-4'>{client.usBusinessTaxID}</div>
-        <div className='col-md-6'>U.S Business Address</div>
-        <div className='col-md-6 pl-4'>{client.usBusineesAddress}</div>
-        <div className='col-md-6'>Email Address For Store</div>
-        <div className='col-md-6 pl-4'>{client.emailForStore}</div>
-        <div className='col-md-6'>Password For Store</div>
-        <div className='col-md-6 pl-4'>{client.passwordForUpdate}</div>
-        <div className='col-md-6'>Bank Account #</div>
+        <div className='col-md-6'>D.O.B:</div>
+        <div className='col-md-6 pl-4'>{formatDate(client.dateOfBirth)}</div>
+        <div className='col-md-6'>Name of Facebook Shop LLC:</div>
+        <div className='col-md-6 pl-4'>{client.nameOfLLC}</div>
+        <div className='col-md-6'>EIN of LLC:</div>
+        <div className='col-md-6 pl-4'>{client.einOfLLC}</div>
+        <div className='col-md-6'>Address on file of LLC:</div>
+        <div className='col-md-6 pl-4'>{client.addressOfLLC}</div>
+        <div className='col-md-6'>Name Of Store:</div>
+        <div className='col-md-6 pl-4'>{client.nameOfStore}</div>
+        <div className='col-md-6'>Bank Account Number for Sales Revenue:</div>
         <div className='col-md-6 pl-4'>{client.bankAccount}</div>
-        <div className='col-md-6'>Routing #</div>
-        <div className='col-md-6 pl-4'>{client.routing}</div>
-        <div className='col-md-6'>DUNS Number</div>
-        <div className='col-md-6 pl-4'>{client.dunsNumber}</div>
-        <div className='col-md-6'>Website</div>
-        <div className='col-md-6 pl-4'>{client.website}</div>
-        <div className='col-md-6'>Amazon Seller Name</div>
-        <div className='col-md-6 pl-4'>{client.amazonSellerName}</div>
-        <div className='col-md-6'>Amazon Store URL</div>
-        <div className='col-md-6 pl-4'>{client.amazonStoreUrl}</div>
+        <div className='col-md-6'>Bank Routing Number for Sales Revenue:</div>
+        <div className='col-md-6 pl-4'>{client.bankRouting}</div>
+        <div className='col-md-6'>Facebook Login Email:</div>
+        <div className='col-md-6 pl-4'>{client.emailOfFacebook}</div>
+        <div className='col-md-6'>Facebook Login Password:</div>
+        <div className='col-md-6 pl-4'>{client.passwordOfFacebook}</div>
       </div>
 
       <div className='table-responsive pt-4'>
@@ -63,8 +59,12 @@ const AdminClientDocuments = ({ client, updateClientDocumentStatus }) => {
                 }}><a href={item.path} target='_blank' rel='noreferrer'>{item.path}</a></td>
                 <td><span className={item.status === 'Pending' ? 'text-danger' : 'text-secondary'}>{item.status}</span></td>
                 <td>
-                  <button onClick={() => updateClientDocumentStatus(client._id, item.keyInDB, 'Approve')} className='badge badge-info mr-2'>Approve</button>
-                  <button onClick={() => updateClientDocumentStatus(client._id, item.keyInDB, 'Deny')} className='badge badge-pending'>Deny</button>
+                  <button onClick={() => {
+                    updateClientDocumentStatus(client._id, item.keyInDB, 'Approve')
+                  }} className='badge badge-info mr-2'>Approve</button>
+                  <button onClick={() => {
+                    updateClientDocumentStatus(client._id, item.keyInDB, 'Deny')
+                  }} className='badge badge-pending'>Deny</button>
                 </td>
               </tr>
             )}

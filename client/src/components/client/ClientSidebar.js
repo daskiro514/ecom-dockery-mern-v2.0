@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { logout } from '../../actions/auth'
 import { useHistory } from "react-router-dom"
 import { setCurrentPage } from '../../actions/admin'
+import logoImage from '../../img/common/logo.png'
 
 const ClientSidebar = ({ logout, setCurrentPage, currentPage }) => {
   let history = useHistory()
@@ -28,15 +29,7 @@ const ClientSidebar = ({ logout, setCurrentPage, currentPage }) => {
   return (
     <div className='col-lg-2 p-2 sidebar'>
       <div className='container-fluid'>
-        <div className='row m-1 p-2 h5 bg-white rounded-lg'>
-          <div className='d-flex justify-content-between align-items-center w-100'>
-            <div>
-              <i className='fa fa-heart-o pt-2 mr-2 h6' style={{ color: '#A78BE2' }}></i>
-              <span>ProtoType</span>
-            </div>
-            <i className='fa fa-align-justify pt-2 mr-2 h6' style={{ color: '#A78BE2' }}></i>
-          </div>
-        </div>
+        <img className='img-fluid rounded mt-4' src={logoImage} alt='logo' />
         <div className='row mx-1 pt-4 h5'>
           Menu
         </div>
