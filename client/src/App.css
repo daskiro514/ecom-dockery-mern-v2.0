@@ -44,11 +44,11 @@ h1, h2, h3, h4, h5, h6, p, span, tr, th, td, div, ul, li, input, label, textarea
 
 .bg-admin .sidebar .menuItem {
   font-size: 22px;
-  color: #0071BD;
+  color: #837185;
 }
 
 .message-item {
-  background-color: rgba(0, 113, 189, 0.24);
+  background-color: rgba(110, 15, 125, 0.1);
   width: fit-content;
   max-width: 70%;
   word-break: break-all;
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p, span, tr, th, td, div, ul, li, input, label, textarea
 }
 
 .bg-admin .sidebar .menuItem:hover {
-  background-color: rgba(0, 113, 189, 0.24);
+  background-color: rgba(110, 15, 125, 0.1);
   border-radius: 10px;
   cursor: pointer;
 }
@@ -121,13 +121,8 @@ h1, h2, h3, h4, h5, h6, p, span, tr, th, td, div, ul, li, input, label, textarea
   width: 70%;
 }
 
-.admin-client .modal-content {
-  padding: 0 20px;
-}
-
 .badge-pending {
-  background-color: #0071BD;
-  color: white;
+  background-color: #CE8696;
 }
 
 .rounded-lg {
@@ -270,12 +265,12 @@ a {
 }
 
 .link-item:hover {
-  background-color: rgba(0, 113, 189, 0.24);
+  background-color: rgba(110, 15, 125, 0.1);
   cursor: pointer;
 }
 
 .selected {
-  background-color: rgba(0, 113, 189, 0.24);
+  background-color: rgba(110, 15, 125, 0.1);
 }
 
 .notification-list {

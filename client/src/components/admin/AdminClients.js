@@ -5,9 +5,7 @@ import { useHistory } from 'react-router'
 import { formatDate } from '../../utils/formatDate1'
 import { documenetsPendingCheck } from '../../utils/clientDocuments'
 
-import { update } from '../../actions/auth'
-
-const AdminClients = ({ getAdminClients, clients, goPage, update }) => {
+const AdminClients = ({ getAdminClients, clients, goPage }) => {
   const history = useHistory()
 
   React.useEffect(() => {
@@ -48,11 +46,11 @@ const AdminClients = ({ getAdminClients, clients, goPage, update }) => {
                 {clients.map((item, index) =>
                   <tr key={index} onClick={() => goPage(history, `client/${item._id}`)}>
                     <td>{item.firstName}</td>
-                    <td onClick={() => goPage(history, `client/${item._id}`)}>{item.lastName}</td>
-                    <td onClick={() => goPage(history, `client/${item._id}`)}>{formatDate(item.dateOfBirth)}</td>
-                    <td onClick={() => goPage(history, `client/${item._id}`)}>{item.email}</td>
-                    <td onClick={() => goPage(history, `client/${item._id}`)}>{item.phoneNumber}</td>
-                    <td onClick={() => goPage(history, `client/${item._id}`)}><span className={'badge ' + (documenetsPendingCheck(item) === 'All Documents Approved' ? 'badge-info' : 'badge-pending')}>{documenetsPendingCheck(item)}</span></td>
+                    <td>{item.lastName}</td>
+                    <td>{formatDate(item.dateOfBirth)}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phoneNumber}</td>
+                    <td><span className={'badge ' + (documenetsPendingCheck(item) === 'All Documents Approved' ? 'badge-info' : 'badge-pending')}>{documenetsPendingCheck(item)}</span></td>
                   </tr>
                 )}
               </tbody>
@@ -68,4 +66,4 @@ const mapStateToProps = state => ({
   clients: state.admin.clients
 })
 
-export default connect(mapStateToProps, { getAdminClients, goPage, update })(AdminClients)
+export default connect(mapStateToProps, { getAdminClients, goPage })(AdminClients)

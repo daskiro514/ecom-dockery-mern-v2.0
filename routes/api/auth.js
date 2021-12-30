@@ -74,22 +74,4 @@ router.post(
   }
 )
 
-// @route    POST api/update
-// @desc     Authenticate user & get token
-// @access   Private
-router.put('/update/:id', auth, async (req, res) => {
-  try {
-    await User.findOneAndUpdate(
-      { _id: req.params.id },
-      { $set: req.body },
-    )
-    res.json({
-      success: true,
-    })
-  } catch (err) {
-    console.error(err.message)
-    res.status(500).send('Server Error')
-  }
-})
-
 module.exports = router

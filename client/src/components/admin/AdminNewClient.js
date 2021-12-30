@@ -13,22 +13,47 @@ const AddNewClient = ({ addNewClient }) => {
     firstName: '',
     lastName: '',
     email: '',
+    dateOfBirth: '',
+    usBusinessTaxID: '',
+    usBusineesAddress: '',
+    emailForStore: '',
     password: '',
     phoneNumber: '',
-    dateOfBirth: '',
-    nameOfLLC: '',
-    einOfLLC: '',
-    addressOfLLC: '',
-    nameOfStore: '',
+    // w9: null,
+    // einVerificationLetter: null,
+    // articlesOfOrganization: null,
+    // bankCard: null,
+    // usDriversLicense: null,
+    // creditDebitCardFront: null,
+    // creditDebitCardBack: null,
+    w9: '',
+    einVerificationLetter: '',
+    articlesOfOrganization: '',
+    bankCard: '',
+    usDriversLicense: '',
+    creditDebitCardFront: '',
+    creditDebitCardBack: '',
     bankAccount: '',
-    bankRouting: '',
-    emailOfFacebook: '',
-    passwordOfFacebook: '',
-    frontCardLink: '',
-    backCardLink: ''
+    routing: '',
+    dunsNumber: '',
+    website: '',
+    amazonSellerName: '',
+    amazonStoreUrl: ''
   })
 
-  const { firstName, lastName, email, password, phoneNumber, dateOfBirth, nameOfLLC, einOfLLC, addressOfLLC, nameOfStore, bankAccount, bankRouting, emailOfFacebook, passwordOfFacebook, frontCardLink, backCardLink } = formData
+  const { firstName, lastName, email, dateOfBirth, usBusinessTaxID, usBusineesAddress, emailForStore, password, phoneNumber, w9, einVerificationLetter, articlesOfOrganization, bankCard, usDriversLicense, bankAccount, routing, creditDebitCardFront, creditDebitCardBack, dunsNumber, website, amazonSellerName, amazonStoreUrl } = formData
+
+  // const fileInputW9Ref = React.useRef()
+  // const fileInputeinVerificationLetterRef = React.useRef()
+  // const fileInputarticlesOfOrganizationRef = React.useRef()
+  // const fileInputBankCardRef = React.useRef()
+  // const fileInputusDriversLicenseRef = React.useRef()
+  // const fileInputcreditDebitCardFrontRef = React.useRef()
+  // const fileInputcreditDebitCardBackRef = React.useRef()
+
+  // const onFileChange = e => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.files[0] })
+  // }
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -37,6 +62,10 @@ const AddNewClient = ({ addNewClient }) => {
   const onSubmit = e => {
     e.preventDefault()
     setIsUploading(true)
+    // let sendData = new FormData()
+    // Object.keys(formData).forEach(key => {
+    //   sendData.append(key, formData[key])
+    // })
     addNewClient(formData, history)
   }
 
@@ -54,7 +83,7 @@ const AddNewClient = ({ addNewClient }) => {
             <div className='row'>
               <div className='col-md-6'>
                 <div className='form-group'>
-                  <label>First Name</label>
+                  <label>First Name *</label>
                   <input
                     type='text'
                     className='form-control'
@@ -65,7 +94,7 @@ const AddNewClient = ({ addNewClient }) => {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Last Name</label>
+                  <label>Last Name *</label>
                   <input
                     type='text'
                     className='form-control'
@@ -76,7 +105,7 @@ const AddNewClient = ({ addNewClient }) => {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Email Address</label>
+                  <label>Business Email *</label>
                   <input
                     type='text'
                     className='form-control'
@@ -87,29 +116,7 @@ const AddNewClient = ({ addNewClient }) => {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Password For This Website</label>
-                  <input
-                    type='password'
-                    className='form-control'
-                    name='password'
-                    value={password}
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <div className='form-group'>
-                  <label>Phone Number</label>
-                  <input
-                    type='text'
-                    className='form-control'
-                    name='phoneNumber'
-                    value={phoneNumber}
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <div className='form-group'>
-                  <label>Date of Birth</label>
+                  <label>Date of Birth *</label>
                   <input
                     type='date'
                     className='form-control'
@@ -120,51 +127,192 @@ const AddNewClient = ({ addNewClient }) => {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Name of Your LLC to be used for the Facebook Shop</label>
+                  <label>U.S Business Tax ID / EIN / TIN *</label>
                   <input
                     type='text'
                     className='form-control'
-                    name='nameOfLLC'
-                    value={nameOfLLC}
+                    name='usBusinessTaxID'
+                    value={usBusinessTaxID}
                     onChange={onChange}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <label>What is the EIN of this LLC?</label>
+                  <label>U.S Business Address *</label>
                   <input
                     type='text'
                     className='form-control'
-                    name='einOfLLC'
-                    value={einOfLLC}
+                    name='usBusineesAddress'
+                    value={usBusineesAddress}
                     onChange={onChange}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <label>What is the addresss on file of this LLC?</label>
+                  <label>Email Address For Store (Preferably Business Email) *</label>
                   <input
-                    type='text'
+                    type='email'
                     className='form-control'
-                    name='addressOfLLC'
-                    value={addressOfLLC}
+                    name='emailForStore'
+                    value={emailForStore}
+                    minLength='6'
                     onChange={onChange}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <label>What would you like the name of your store to be? (If you'd like us to choose, write "You Choose")</label>
+                  <label>Password For Store (Preferably Business Email) *</label>
                   <input
-                    type='text'
+                    type='password'
                     className='form-control'
-                    name='nameOfStore'
-                    value={nameOfStore}
+                    name='password'
+                    value={password}
+                    minLength='6'
                     onChange={onChange}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Bank Account Number for Sales Revenue</label>
+                  <label>Phone Number *</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='phoneNumber'
+                    value={phoneNumber}
+                    onChange={onChange}
+                    required
+                  />
+                </div>
+                <div className='form-group'>
+                  <label>W8 or W9 (Google Drive Link)</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='w9'
+                    value={w9}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (w9 ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputW9Ref.current.click()}
+                    value={w9 ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='w9'
+                    onChange={onFileChange}
+                    ref={fileInputW9Ref}
+                    required
+                  /> */}
+                </div>
+                <div className='form-group'>
+                  <label>EIN Verification letter from the Department of Treasury(Google Drive Link)</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='einVerificationLetter'
+                    value={einVerificationLetter}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (einVerificationLetter ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputeinVerificationLetterRef.current.click()}
+                    value={einVerificationLetter ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='einVerificationLetter'
+                    onChange={onFileChange}
+                    ref={fileInputeinVerificationLetterRef}
+                    required
+                  /> */}
+                </div>
+
+              </div>
+              <div className='col-md-6'>
+                <div className='form-group'>
+                  <label>Articles Of Organization(Google Drive Link)</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='articlesOfOrganization'
+                    value={articlesOfOrganization}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (articlesOfOrganization ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputarticlesOfOrganizationRef.current.click()}
+                    value={articlesOfOrganization ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='articlesOfOrganization'
+                    onChange={onFileChange}
+                    ref={fileInputarticlesOfOrganizationRef}
+                    required
+                  /> */}
+                </div>
+                <div className='form-group'>
+                  <label>Bank/Credit Card Statement(Google Drive Link)</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='bankCard'
+                    value={bankCard}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (bankCard ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputBankCardRef.current.click()}
+                    value={bankCard ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='bankCard'
+                    onChange={onFileChange}
+                    ref={fileInputBankCardRef}
+                    required
+                  /> */}
+                </div>
+                <div className='form-group'>
+                  <label>U.S Drivers License Front & Back(Google Drive Link)</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='usDriversLicense'
+                    value={usDriversLicense}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (usDriversLicense ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputusDriversLicenseRef.current.click()}
+                    value={usDriversLicense ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='usDriversLicense'
+                    onChange={onFileChange}
+                    ref={fileInputusDriversLicenseRef}
+                    required
+                  /> */}
+                </div>
+                <div className='form-group'>
+                  <label>Bank Account # *</label>
                   <input
                     type='text'
                     className='form-control'
@@ -175,70 +323,113 @@ const AddNewClient = ({ addNewClient }) => {
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Bank Routing Number for Sales Revenue</label>
+                  <label>Routing # *</label>
                   <input
                     type='text'
                     className='form-control'
-                    name='bankRouting'
-                    value={bankRouting}
+                    name='routing'
+                    value={routing}
                     onChange={onChange}
                     required
                   />
                 </div>
-              </div>
-              <div className='col-md-6'>
                 <div className='form-group'>
-                  <label>Facebook Login EMAIL. (If you created your Facebook with a phone number, please go into settings and find the email associated, please associate one with your Facebook and provide that email to us below)</label>
+                  <label>Credit/Debit Card (Front) (Google Drive Link)</label>
                   <input
                     type='text'
                     className='form-control'
-                    name='emailOfFacebook'
-                    value={emailOfFacebook}
+                    name='creditDebitCardFront'
+                    value={creditDebitCardFront}
                     onChange={onChange}
                     required
                   />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (creditDebitCardFront ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputcreditDebitCardFrontRef.current.click()}
+                    value={creditDebitCardFront ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='creditDebitCardFront'
+                    onChange={onFileChange}
+                    ref={fileInputcreditDebitCardFrontRef}
+                    required
+                  /> */}
                 </div>
                 <div className='form-group'>
-                  <label>Facebook login PASSWORD</label>
+                  <label>Credit/Debit Card (Back) (Google Drive Link)</label>
                   <input
                     type='text'
                     className='form-control'
-                    name='passwordOfFacebook'
-                    value={passwordOfFacebook}
+                    name='creditDebitCardBack'
+                    value={creditDebitCardBack}
+                    onChange={onChange}
+                    required
+                  />
+                  {/* <input
+                    type='button'
+                    className={'form-control ' + (creditDebitCardBack ? 'text-success' : 'text-danger')}
+                    onClick={() => fileInputcreditDebitCardBackRef.current.click()}
+                    value={creditDebitCardBack ? 'Document Selected' : 'Upload Document'}
+                  />
+                  <input
+                    type='file'
+                    className='file'
+                    name='creditDebitCardBack'
+                    onChange={onFileChange}
+                    ref={fileInputcreditDebitCardBackRef}
+                    required
+                  /> */}
+                </div>
+                <div className='form-group'>
+                  <label>DUNS Number</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='dunsNumber'
+                    value={dunsNumber}
                     onChange={onChange}
                     required
                   />
                 </div>
-                <div className='form-group mt-3'>
-                  <b>Credit Card for Cost of Goods</b>
-                </div>
                 <div className='form-group'>
-                  <label>Picture of Front of the Card</label>
-                  <input 
+                  <label>Website</label>
+                  <input
                     type='text'
                     className='form-control'
-                    placeholder='Upload DropBox / Google Drive Link'
-                    name='frontCardLink'
-                    value={frontCardLink}
+                    name='website'
+                    value={website}
                     onChange={onChange}
                     required
                   />
                 </div>
                 <div className='form-group'>
-                  <label>Picture of Back of the Card</label>
-                  <input 
+                  <label>Amazon Seller Name</label>
+                  <input
                     type='text'
                     className='form-control'
-                    placeholder='Upload DropBox / Google Drive Link'
-                    name='backCardLink'
-                    value={backCardLink}
+                    name='amazonSellerName'
+                    value={amazonSellerName}
+                    onChange={onChange}
+                    required
+                  />
+                </div>
+                <div className='form-group'>
+                  <label>Amazon Store URL</label>
+                  <input
+                    type='text'
+                    className='form-control'
+                    name='amazonStoreUrl'
+                    value={amazonStoreUrl}
                     onChange={onChange}
                     required
                   />
                 </div>
               </div>
             </div>
-            <div className='form-group pt-3'>
+            <div className='form-group pt-2'>
               <input
                 type='submit'
                 className='form-control'
