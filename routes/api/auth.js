@@ -77,10 +77,10 @@ router.post(
 // @route    POST api/update
 // @desc     Authenticate user & get token
 // @access   Private
-router.post('/update', auth, async (req, res) => {
+router.put('/update/:id', auth, async (req, res) => {
   try {
     await User.findOneAndUpdate(
-      { _id: req.user.id },
+      { _id: req.params.id },
       { $set: req.body },
     )
     res.json({

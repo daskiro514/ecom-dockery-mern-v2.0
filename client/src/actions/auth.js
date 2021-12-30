@@ -61,10 +61,13 @@ export const login = (email, password) => async dispatch => {
 }
 
 // Update User
-export const update = (data) => async dispatch => {
+export const update = (data, id) => async dispatch => {
   try {
-    const res = await api.post('/auth/update', data)
+    const res = await api.put('/auth/update/'+id, data)
 
+    if (res.data.success) {
+      dispatch(setAlert('Successfully changed!', 'success'))
+    }
     dispatch(loadUser())
   } catch (err) {
     const errors = err.response.data.errors
